@@ -32,5 +32,5 @@ jobs:
           push: true
           tags: |
             luc4592/trabalho-ci:v1
-            luc4592/trabalho-ci:latest
+            luc4592/trabalho-ci:lates
             

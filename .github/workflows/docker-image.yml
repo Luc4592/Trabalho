@@ -13,6 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    
+      - uses: actions/checkout@v3
+      
+      - name: Docker Login
+        uses: docker/login-action@v2
+        with:
+          username: ${{  secrets.USER  }}
+          password: ${{  secrets.PASSWD  }}
+      
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v4
+        
+        with:
+        
+          context:  .
+          file:  .
+          push: true
+          tags: |
+            luc4592/trabalho-ci:v1
+            luc4592/trabalho-ci:latest
+            
